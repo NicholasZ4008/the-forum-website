@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { Instagram, Twitter } from "lucide-react"
+import { Facebook, Instagram, Twitter } from "lucide-react"
 import { TikTokIcon } from "./icons/tiktok-icon"
 import { scrollToSection } from "@/lib/utils"
 
@@ -47,6 +47,9 @@ export default function Footer() {
             </Link>
             <Link href="https://twitter.com/@theforumsfu" className="text-gray-300 hover:text-white transition">
               <TikTokIcon className="h-5 w-5"/>
+            </Link>
+            <Link href="https://twitter.com/@theforumsfu" className="text-gray-300 hover:text-white transition">
+              <Facebook className="h-5 w-5"/>
             </Link>
           </div>
         </div>
