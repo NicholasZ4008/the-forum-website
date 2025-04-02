@@ -1,6 +1,7 @@
 "use client"
-import { ChevronRight, ChevronLeft } from "lucide-react"
+import { ChevronRight, ChevronLeft} from "lucide-react"
 import type React from "react"
+import Link from "next/link"
 
 import { useState, useRef, useId, useEffect } from "react"
 import Image from "next/image"
@@ -12,6 +13,7 @@ interface EventData {
   time: string
   location: string
   image: string
+  src: string
 }
 
 interface EventCardProps {
@@ -64,7 +66,7 @@ const EventCard = ({ event, index, current, handleCardClick }: EventCardProps) =
     yRef.current = 0
   }
 
-  const { image, title, date, time, location } = event
+  const { image, title, date, time, location, src } = event
 
   return (
     <div className="[perspective:1200px] [transform-style:preserve-3d]">
@@ -113,12 +115,15 @@ const EventCard = ({ event, index, current, handleCardClick }: EventCardProps) =
               <p className="text-sm text-gray-700">{time}</p>
               <p className="text-sm text-gray-700">{location}</p>
             </div>
-            <Button
-              variant="outline"
-              className="w-full mt-3 border-black text-black hover:bg-black hover:text-white transition-colors"
-            >
-              GET TICKETS
+            <Link href={src}>
+              <Button
+                variant="outline"
+                className="w-full mt-3 border-black text-black hover:bg-black hover:text-white transition-colors"
+              >
+                GET TICKETS
             </Button>
+            </Link>
+            
           </div>
         </div>
       </li>
@@ -127,7 +132,7 @@ const EventCard = ({ event, index, current, handleCardClick }: EventCardProps) =
 }
 
 interface CarouselControlProps {
-  type: string
+  type?: string
   title: string
   handleClick: () => void
 }
@@ -135,9 +140,7 @@ interface CarouselControlProps {
 const CarouselControl = ({ type, title, handleClick }: CarouselControlProps) => {
   return (
     <button
-      className={`w-10 h-10 flex items-center mx-2 justify-center bg-neutral-200 dark:bg-neutral-800 border-3 border-transparent rounded-full focus:border-[#6D64F7] focus:outline-none hover:-translate-y-0.5 active:translate-y-0.5 transition duration-200 ${
-        type === "previous" ? "rotate-180" : ""
-      }`}
+      className="w-10 h-10 flex items-center mx-2 justify-center bg-neutral-200 dark:bg-neutral-800 border-3 border-transparent rounded-full focus:border-[#6D64F7] focus:outline-none hover:-translate-y-0.5 active:translate-y-0.5 transition duration-200"
       title={title}
       onClick={handleClick}
     >
@@ -191,7 +194,7 @@ export default function AceCarousel({ events }: CarouselProps) {
       <div className="absolute flex justify-center w-full top-[calc(100%+1rem)]">
         <CarouselControl type="previous" title="Go to previous event" handleClick={handlePreviousClick} />
 
-        <CarouselControl type="next" title="Go to next event" handleClick={handleNextClick} />
+        <CarouselControl title="Go to next event" handleClick={handleNextClick} />
       </div>
     </div>
   )

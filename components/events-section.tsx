@@ -4,26 +4,13 @@ import AceCarousel from "@/components/ui/ace-carousel"
 export default function EventsSection() {
   const eventData = [
     {
-      title: "NEON NIGHTS",
-      date: "APR 12",
-      time: "10PM - 3AM",
-      location: "SFU Burnaby Campus",
-      image: "/placeholder.svg?height=400&width=600",
-    },
-    {
-      title: "SUMMER KICKOFF",
-      date: "MAY 5",
-      time: "8PM - 1AM",
-      location: "Downtown Vancouver",
-      image: "/placeholder.svg?height=400&width=600",
-    },
-    {
-      title: "FROSH WEEK",
-      date: "SEP 2-8",
-      time: "VARIOUS TIMES",
-      location: "SFU Campus",
-      image: "/placeholder.svg?height=400&width=600",
-    },
+      title: "FINAL EXAM",
+      date: "APR 24",
+      time: "9PM - 2AM",
+      location: "Celebrities Nightclub ",
+      image: "/final_exam_logo.png",
+      src: "https://www.ticketweb.ca/event/final-exam-sfus-celebrities-nightclub-tickets/14306713?pl=blueprint~"
+    }
   ]
 
   return (
@@ -33,7 +20,7 @@ export default function EventsSection() {
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-bold tracking-tight">UPCOMING EVENTS</h2>
             <Link href="/events" className="text-sm font-medium underline underline-offset-4">
-              VIEW ALL
+              {/* When we have a past events page */}
             </Link>
           </div>
           <div className="h-1 w-20 bg-black mt-1.5" />

@@ -17,12 +17,6 @@ export default function Home() {
         <div id="events">
           <EventsSection />
         </div>
-        <div id="photos">
-          <EventPhotoRequestSection />
-        </div>
-        <div id="community">
-          <CommunitySection />
-        </div>
         <div id="contact">
           <CtaSection />
         </div>

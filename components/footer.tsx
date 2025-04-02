@@ -39,19 +39,6 @@ export default function Footer() {
             >
               EVENTS
             </button>
-            
-            <button
-              onClick={() => scrollToSection("photos")}
-              className="text-sm font-medium tracking-widest hover:text-gray-300 transition"
-            >
-              PHOTOS
-            </button>
-            <button
-              onClick={() => scrollToSection("community")}
-              className="text-sm font-medium tracking-widest hover:text-gray-300 transition"
-            >
-              COMMUNITY
-            </button>
           </nav>
 
           <div className="flex items-center gap-4">

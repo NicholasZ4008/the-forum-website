@@ -13,15 +13,27 @@ export default function CtaSection() {
   const [isFocused, setIsFocused] = useState(false)
   const [isHoveringMascot, setIsHoveringMascot] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (email) {
-      console.log("Subscribed with:", email)
-      setIsSubmitted(true)
-      setTimeout(() => {
-        setIsSubmitted(false)
-        setEmail("")
-      }, 3000)
+    try{
+      const response = await fetch("https://your-backend-url/api/email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email}),
+      });
+
+      if(response.ok){
+        console.log("Subscribed with:", email)
+        setIsSubmitted(true)
+      }
+      else{
+        setTimeout(() => {
+          setIsSubmitted(false)
+          setEmail("")
+        }, 3000)
+      }
+    } catch(error){
+      console.error("Error: ", error)
     }
   }
 
@@ -44,7 +56,7 @@ export default function CtaSection() {
             onMouseLeave={() => setIsHoveringMascot(false)}
           >
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Bear%20Head%20Icon-X7HZbzWCrG4eCa9ltcylJrj0rQjfpQ.png"
+              src="bear_head.png"
               alt="TF Bear Mascot"
               width={80}
               height={80}

@@ -38,19 +38,6 @@ export default function Header() {
           >
             EVENTS
           </button>
-          
-          <button
-            onClick={() => scrollToSection("photos")}
-            className="text-sm font-medium tracking-widest hover:text-gray-300 transition"
-          >
-            PHOTOS
-          </button>
-          <button
-            onClick={() => scrollToSection("community")}
-            className="text-sm font-medium tracking-widest hover:text-gray-300 transition"
-          >
-            COMMUNITY
-          </button>
 
           <Button
             variant="outline"
