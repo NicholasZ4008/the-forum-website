@@ -15,11 +15,12 @@ export default function CtaSection() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    const apiURL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5246';
     try{
-      const response = await fetch("https://your-backend-url/api/email", {
+      const response = await fetch(`${apiURL}/emails`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email}),
+        body: JSON.stringify({id: 0, EmailName: email}), //set id as 0 so that the server can handle it via auto-incrementing.
       });
 
       if(response.ok){
