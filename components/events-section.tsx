@@ -19,9 +19,9 @@ export default function EventsSection() {
         <div className="flex flex-col mb-10">
           <div className="flex items-center justify-between">
             <h2 className="text-3xl font-bold tracking-tight">UPCOMING EVENTS</h2>
-            <Link href="/events" className="text-sm font-medium underline underline-offset-4">
-              {/* When we have a past events page */}
-            </Link>
+            {/* <Link href="/events" className="text-sm font-medium underline underline-offset-4">
+
+            </Link> */}
           </div>
           <div className="h-1 w-20 bg-black mt-1.5" />
         </div>

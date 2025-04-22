@@ -4,10 +4,41 @@ import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: 'The Forum',
-  description: 'The Forum Main Page',
+  description: "The Forum - SFU's party organization hosting Vancouver's most electrifying student events. Experience unforgettable nights, exclusive venues, and top entertainment across the city.",
   icons:{
     icon:'/favicon.ico'
-  }
+  },
+  openGraph:{
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://theforumuniversity.com/',
+    title: 'The Forum',
+    description: "The Forum - SFU's premier party organization hosting Vancouver's most electrifying student events. Experience unforgettable nightlife, exclusive venues, and top entertainment across the city.",
+    siteName: 'The Forum',
+  },
+  keywords: 'Forum events, SFU parties, Vancouver nightlife, student parties, university events, campus parties, SFU nightlife, Vancouver student events, Burnaby events, college parties, Fraser Valley parties, weekend events Vancouver, SFU social scene, Vancouver party organization, student entertainment, Vancouver club nights, university nightlife, SFU student events, Vancouver dance parties, Metro Vancouver events, BC university parties, SFU social club, Vancouver party scene, Lower Mainland events, student social events, SFU entertainment, Vancouver student nightlife, campus social events, exclusive parties Vancouver, premier student events',
+  applicationName: 'The Forum',
+  authors: [{ name: 'Nicholas Zhang', url: 'https://theforumuniversity.com' }],
+  creator: 'TheForumEntertainment',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+
 }
 
 export default function RootLayout({
