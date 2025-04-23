@@ -38,7 +38,18 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification:{
+    google: process.env.GOOGLE_VERIFICATION,
 
+  },
+  alternates: {
+    canonical: 'https://theforumuniversity.com',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
 }
 
 export default function RootLayout({
