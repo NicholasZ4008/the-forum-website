@@ -4,7 +4,7 @@ import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: 'The Forum',
-  description: "The Forum - SFU's party organization hosting Vancouver's most electrifying student events. Experience unforgettable nights, exclusive venues, and top entertainment across the city.",
+  description: "The Forum - SFU's party organization hosting Vancouver's most hype student events. Experience unforgettable nights, exclusive venues, and top entertainment across the city.",
   icons:{
     icon:'/favicon.ico'
   },
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://theforumuniversity.com/',
     title: 'The Forum',
-    description: "The Forum - SFU's premier party organization hosting Vancouver's most electrifying student events. Experience unforgettable nightlife, exclusive venues, and top entertainment across the city.",
+    description: "The Forum - SFU's premier party organization hosting Vancouver's most hype student events. Experience unforgettable nights, exclusive venues, and top entertainment across the city.",
     siteName: 'The Forum',
   },
   keywords: 'Forum events, SFU parties, Vancouver nightlife, student parties, university events, campus parties, SFU nightlife, Vancouver student events, Burnaby events, college parties, Fraser Valley parties, weekend events Vancouver, SFU social scene, Vancouver party organization, student entertainment, Vancouver club nights, university nightlife, SFU student events, Vancouver dance parties, Metro Vancouver events, BC university parties, SFU social club, Vancouver party scene, Lower Mainland events, student social events, SFU entertainment, Vancouver student nightlife, campus social events, exclusive parties Vancouver, premier student events',
@@ -38,7 +38,13 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  verification:{
+    google: process.env.GOOGLE_VERIFICATION,
 
+  },
+  alternates: {
+    canonical: 'https://theforumuniversity.com',
+  },
 }
 
 export default function RootLayout({
@@ -47,9 +53,45 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   const fbPixelId = process.env.YOUR_PIXEL_ID;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://theforumuniversity.com"
+    },
+    "headline": "The Forum - SFU's Premier Party Organization",
+    "description": "The Forum - SFU's premier party organization hosting Vancouver's most hype student events. Experience unforgettable nights, exclusive venues, and top entertainment across the city.",
+    "image": "https://theforumuniversity.com/logo.png",
+    "dateCreated": "2022-09-01T00:00:00+07:00",
+    "datePublished": "2022-09-01T00:00:00+07:00",
+    "dateModified": "2025-04-23T00:00:00+07:00",
+    "author": {
+      "@type": "Person",
+      "name": "Nicholas Zhang",
+      "url": "https://theforumuniversity.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Forum Entertainment",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://theforumuniversity.com/logo.png"
+      }
+    },
+    "inLanguage": "en-US",
+    "isFamilyFriendly": "true"
+  }
+
+
   return (
     <html lang="en">
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
         <Script
           id="facebook-pixel"
           strategy="afterInteractive"
