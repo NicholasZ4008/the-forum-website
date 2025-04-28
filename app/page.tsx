@@ -5,6 +5,7 @@ import EventPhotoRequestSection from "@/components/event-photo-request-section"
 import CommunitySection from "@/components/community-section"
 import CtaSection from "@/components/cta-section"
 import Footer from "@/components/footer"
+import CarouselSection from "@/components/carousel-section"
 
 export default function Home() {
   return (
@@ -16,6 +17,9 @@ export default function Home() {
         </div>
         <div id="events">
           <EventsSection />
+        </div>
+        <div>
+          <CarouselSection/>
         </div>
         <div id="contact">
           <CtaSection />
