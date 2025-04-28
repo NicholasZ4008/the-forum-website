@@ -5,16 +5,36 @@ import Script from 'next/script'
 export const metadata: Metadata = {
   title: 'The Forum',
   description: "The Forum - SFU's party organization hosting Vancouver's most hype student events. Experience unforgettable nights, exclusive venues, and top entertainment across the city.",
-  icons:{
-    icon:'/favicon.ico'
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+    other: {
+      rel: 'icon',
+      url: '/tf-logo-black.png',
+    }
   },
-  openGraph:{
+  openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://theforumuniversity.com/',
     title: 'The Forum',
     description: "The Forum - SFU's premier party organization hosting Vancouver's most hype student events. Experience unforgettable nights, exclusive venues, and top entertainment across the city.",
     siteName: 'The Forum',
+    images: [
+      {
+        url: 'https://theforumuniversity.com/tf-logo-black.png',
+        width: 1200,
+        height: 630,
+        alt: 'The Forum Logo',
+      }
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'The Forum',
+    description: "The Forum - SFU's premier party organization hosting Vancouver's most hype student events.",
+    images: ['https://theforumuniversity.com/tf-logo-black.png'],
   },
   keywords: 'Forum events, SFU parties, Vancouver nightlife, student parties, university events, campus parties, SFU nightlife, Vancouver student events, Burnaby events, college parties, Fraser Valley parties, weekend events Vancouver, SFU social scene, Vancouver party organization, student entertainment, Vancouver club nights, university nightlife, SFU student events, Vancouver dance parties, Metro Vancouver events, BC university parties, SFU social club, Vancouver party scene, Lower Mainland events, student social events, SFU entertainment, Vancouver student nightlife, campus social events, exclusive parties Vancouver, premier student events',
   applicationName: 'The Forum',
@@ -38,9 +58,8 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  verification:{
+  verification: {
     google: process.env.GOOGLE_VERIFICATION,
-
   },
   alternates: {
     canonical: 'https://theforumuniversity.com',
@@ -55,41 +74,45 @@ export default function RootLayout({
   const fbPixelId = process.env.YOUR_PIXEL_ID;
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://theforumuniversity.com"
-    },
-    "headline": "The Forum - SFU's Premier Party Organization",
-    "description": "The Forum - SFU's premier party organization hosting Vancouver's most hype student events. Experience unforgettable nights, exclusive venues, and top entertainment across the city.",
-    "image": "https://theforumuniversity.com/logo.png",
-    "dateCreated": "2022-09-01T00:00:00+07:00",
-    "datePublished": "2022-09-01T00:00:00+07:00",
-    "dateModified": "2025-04-23T00:00:00+07:00",
-    "author": {
-      "@type": "Person",
-      "name": "Nicholas Zhang",
-      "url": "https://theforumuniversity.com"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "The Forum Entertainment",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://theforumuniversity.com/logo.png"
-      }
-    },
-    "inLanguage": "en-US",
-    "isFamilyFriendly": "true"
+    "@type": "Organization",
+    "name": "The Forum Entertainment",
+    "url": "https://theforumuniversity.com",
+    "logo": "https://theforumuniversity.com/tf-logo-black.png",
+    "sameAs": [
+      // Add your social profiles here if applicable
+      // "https://www.instagram.com/yourhandle",
+      // "https://www.facebook.com/yourpage"
+    ],
+    "description": "The Forum - SFU's premier party organization hosting Vancouver's most hype student events. Experience unforgettable nights, exclusive venues, and top entertainment across the city."
   }
 
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "The Forum",
+    "url": "https://theforumuniversity.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://theforumuniversity.com/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
 
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+      </head>
       <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
 
         <Script
@@ -115,6 +138,7 @@ export default function RootLayout({
             width="1"
             style={{ display: "none" }}
             src={`https://www.facebook.com/tr?id=${fbPixelId}&ev=PageView&noscript=1`}
+            alt=""
           />
         </noscript>
         {children}
