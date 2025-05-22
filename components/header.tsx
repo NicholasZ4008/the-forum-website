@@ -13,13 +13,12 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image
-            src="/tf-logo-white.png"
+            src="/horizontal_white_logo.png"
             alt="TF Logo"
             width={50}
             height={40}
             className="h-10 w-auto"
           />
-          <span className="text-xl font-bold tracking-wider hidden sm:inline-block">THE FORUM</span>
         </Link>
 
         {/* Desktop Navigation */}
